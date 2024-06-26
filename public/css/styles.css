@@ -1,0 +1,591 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos generales */
+:root {
+  --color-primario: #000123;
+  --color-secundario: #FF0F7B;
+  --color-acento: #00FFC9;
+  --color-textos: #f2f2f2;
+  --color-negro: #101010;
+
+
+  --color-neon: hsl(317 100% 54%);
+
+}
+
+
+/*---------------------------- SECTIONS ----------------------------*/
+
+
+#inicio {
+  background-color: var(--color-primario);
+}
+
+#contenido {
+  background-color: var(--color-primario);
+}
+
+#nosotros {
+  background-color: var(--color-primario);
+  font-family: outfit;
+}
+
+#contacto {
+  background-color: var(--color-primario);
+  font-family: outfit;
+}
+
+#inicio h1 {
+  color: #f2f2f2;
+  font-family: outfit;
+
+}
+
+#contenido h1 {
+  color: #f2f2f2;
+  font-family: outfit;
+}
+
+#contacto h1 {
+  color: #f2f2f2;
+  font-family: outfit;
+  text-align: center;
+}
+
+section {
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+
+/*---------------------------- HEADER ----------------------------*/
+header {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Outfit;
+  flex-wrap: wrap;
+}
+
+header p {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--color-secundario);
+  font-weight: bold;
+  font-size: xx-large;
+  
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding-right: 1.25rem;
+
+  @media (width < 480px){
+    padding: 0;
+  }
+}
+
+header nav ul li {
+  margin: 0 10px;
+  
+}
+
+header nav ul li a {
+  color: var(--color-acento);
+  text-decoration: none;
+  font-size: clamp(1.5rem, 2.3vw, 4rem);
+}
+header nav ul li a:hover {
+  color: #f2f2f2;
+  text-shadow: 0 0 10px #f2f2f2,
+               0 0 20px #f2f2f2,
+               0 0 40px #f2f2f2,
+               0 0 80px #f2f2f2,
+               0 0 120px #f2f2f2;
+}
+
+.logotipo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @media (width < 480px ){
+      p {
+        display: none;
+      }
+      img {
+        margin-left: 1rem;
+      }
+  }
+}
+
+
+
+
+/*---------------------------- INICIO ----------------------------*/
+#inicio {
+  background-image: url('https://res.cloudinary.com/dkojgz9s6/image/upload/v1715800847/CodoACodoNJS/background_regenerado_en7lye.jpg');
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.home-text {
+  color: var(--color-textos);
+  font-family: orbitron;
+  text-align: end;
+  grid-column: 3/4;
+  grid-row: 2;
+  padding: 20px;
+}
+.home-text p {
+  
+  font-size: clamp(2rem, 4.2vw, 5rem);
+  color: white;
+  font-weight: bold;
+}
+
+
+
+/*---------------------------- Botón Neon ----------------------------*/
+
+.neon-button {
+  grid-column: 3;
+  grid-row: 3;
+  justify-self: center;
+  place-items: center;
+
+
+  font-size: 1.4em;
+  width: 9.2em;
+  height: 1.1em;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--color-acento);
+  border: var(--color-neon) 0.125em solid;
+
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+
+  box-shadow: inset 0 0 0.5em 0 var(--color-neon), 0 0 0.5em 0 var(--color-neon);
+
+  position: relative;
+}
+
+.neon-button::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: var(--color-neon);
+  top: 120%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+  filter: blur(1em);
+  opacity: 0.7;
+}
+
+.neon-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 2em 0.5em var(--color-neon);
+  opacity: 0;
+  background-color: var(--color-neon);
+  z-index: -1;
+  transition: opacity 100ms linear;
+}
+
+.neon-button:hover,
+.neon-button:focus {
+  color: var(--color-textos);
+  text-shadow: none;
+  z-index: 2;
+}
+
+.neon-button:hover::before,
+.neon-button:focus::before {
+  opacity: 1;
+}
+
+.neon-button:hover::after,
+.neon-button:focus::after {
+  opacity: 1;
+}
+
+
+
+/*---------------------------- CONTENIDO ----------------------------*/
+
+
+/* ESTILOS JUEGOS */
+#contenido {
+  max-height: 1200px;
+}
+.centrar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imgsGeneros {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.iconos{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 80%;
+  max-width: 400px;
+  padding: 10px;
+}
+/* PADRE */
+
+.slider {
+  display: flex;
+  position: relative;
+  max-width: 1200px;
+  padding: 20px;
+  height: 800px;
+  overflow: hidden;
+  color: var(--color-texto-parrafos);
+  background-color: var(--color-primario);
+  border-radius: 15px;
+  border: 2px solid var(--color-neon) ; 
+  font-family: Outfit;
+}
+
+/* Hijos */
+
+.slides {
+  display: flex;
+  /* justify-content: center; */
+  transition: transform 0.5s ease-in-out;;
+  width: 100%;
+  /* flex-wrap: nowrap; */
+}
+
+.slide {
+  min-width: 100%;
+  /* width: 100%; */
+  box-sizing: border-box;
+  flex-shrink: 0;
+  overflow: hidden; 
+  padding: 20px;    
+}
+
+.slide .info {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.info h2 , .info p{
+  color: var(--color-textos);
+}
+
+
+.slide img {
+  width: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.titulosRel{
+  padding-top: 6%;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: var(--color-acento);
+  font-weight: bold;
+  font-size: 18px;
+  transition: background-color 0.6s ease;
+  border-radius: 15%; 
+  user-select: none;
+  background-color: var(--color-primario);
+  
+}
+
+.next {
+  right: 0;
+  /* border-radius: 3px 0 0 3px; */
+}
+
+.prev {
+  left:0;
+}
+.prev:hover, .next:hover {
+  background-color: var(--color-neon);
+}
+
+.logosJuegos{
+  max-height: 125px;
+
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .slider {
+      height: auto;
+      padding: 10px;
+      max-width: 550px;
+  }
+  .slide {
+      padding: 10px;
+      max-width: 500px;
+  }
+  .iconos {
+      width: 100%;
+      max-width: 300px;
+  }
+  .prev, .next {
+      font-size: 14px;
+      padding: 12px;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .slider {
+      height: auto;
+      padding: 5px;
+      max-width: 350;
+  }
+  .slide {
+      padding: 5px;
+      max-width: 400px;
+  }
+  .iconos {
+      width: 100%;
+      max-width: 200px;
+      gap: 5px;
+  }
+  .prev, .next {
+      font-size: 12px;
+      padding: 8px;
+  }
+}
+
+
+
+/* FIN ESTILOS JUEGOS */
+
+/*---------------------------- NOSOTROS ----------------------------*/
+
+#nosotros {
+  color: var(--color-textos);
+  font-size: 30px;
+  text-align: center;
+  font-family: orbitron;
+}
+
+#nosotros span {
+  color: var(--color-neon);
+}
+
+.us-container {
+  justify-content: center;
+  margin-top: 50px;
+  background-color: var(--color-primario);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#nosotros p {
+  font-family: Outfit;
+  font-size: 1.2rem;
+  color: var(--color-textos);
+  text-align: justify;
+}
+
+#nosotros h3 {
+  font-size: 1rem;
+  text-align: center;
+  color: var(--color-neon);
+}
+
+.card-us {
+  text-align: justify;
+  width: 33%;
+  margin: 20px;
+  padding: 20px;
+  background-color: var(--color-bg);
+  border-radius: 15px;
+  border: 2px solid var(--color-neon);
+  transition: 0.25s;
+}
+
+.card-us:hover {
+  box-shadow: 0 0 30px var(--color-neon);
+  border: 3px solid var(--color-neon);
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .card-us {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+/*---------------------------- CONTACTO ----------------------------*/
+
+.container-form {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.contact-title {
+  text-align: center;
+}
+
+.grid-container-form {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.form {
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 160px;
+}
+
+.button-form[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #FF0F7B;
+  color: #020202;
+  font-family: outfit;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-form[type="submit"]:hover {
+  background-color: var(--color-acento)
+}
+
+.text-column {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+.text-column p {
+  text-align: center;
+  font-size: large;
+}
+
+.iframe-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+
+
+
+
+
+/*---------------------------- FOOTER ----------------------------*/
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  background-color: #151414;
+  bottom: 0;
+}
