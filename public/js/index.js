@@ -1,8 +1,6 @@
 const express = require('express');
 const sequelize = require('../../config/database');
-const mysql = require('mysql');
-const fs = require('fs');
-
+const createDatabase = require('../../config/initDB')
 
 //Rutas
 const JuegoRoutes = require('../../routes/JuegoRoutes');
@@ -17,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 // Middlewares
 app.use(express.json()); // Middleware para parsear cuerpos de petición en formato JSON
 app.use(express.static('public')); // Middleware para servir archivos estáticos desde el directorio 'public'
-const bodyParser = require('body-parser');
+
 
 
 // ruta de prueba
@@ -45,9 +43,11 @@ app.use((err, req, res, next) => {
 
 
 
-
-sequelize.sync() // sincronizamos los modelos de sequelize con la base de datos y retorna una promesa
-    .then(() => app.listen(PORT, () => {// Inicia el servidor Express
-        console.log(`Server running at http://localhost:${PORT}`);
-    }))
-    .catch((err) => console.log('Error syncing database:', err));
+createDatabase().then(() => {
+    return sequelize.sync()
+        .then( console.log("Tablas Creadas")) // sincronizamos los modelos de sequelize con la base de datos y retorna una promesa
+        .then(() => app.listen(PORT, () => {// Inicia el servidor Express
+            console.log(`Server running at http://localhost:${PORT}`);
+        }))
+        .catch((err) => console.log('Error syncing database:', err));
+})
