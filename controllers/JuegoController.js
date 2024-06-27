@@ -26,6 +26,16 @@ const ObtenerJuegos = async (req, res) => {
     }
 }
 
+const ObtenerJuego = async (req, res) => {
+    try {
+        const {ID_juego} = req.params;
+        const juego = await Juego.findByPk(ID_juego);
+        res.status(200).json(juego);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch juegos' });
+    }
+}
+
 const ModificarJuego = async (req, res) => {
     const { ID_juego } = req.params;
     const { Titulo, Descripcion, Desarrollador, Publicador, Fecha_lanzamiento, Precio, Plataforma, URL_imagen, URL_archivo } = req.body;
@@ -72,5 +82,6 @@ const BorrarJuego = async (req, res) => {
 
 module.exports = {  CrearJuego ,
                     ObtenerJuegos,
+                    ObtenerJuego,
                     ModificarJuego,
                     BorrarJuego }

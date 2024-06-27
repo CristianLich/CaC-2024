@@ -23,10 +23,10 @@ const Compra = sequelize.define('Compra', {
         //     });}
     },
     ID_cliente: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(100),
         references: {
             model: Cliente,
-            key: 'ID_cliente'
+            key: 'Email'
         }
     }
 },
