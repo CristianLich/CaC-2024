@@ -16,17 +16,16 @@ const Compra = sequelize.define('Compra', {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
         defaultValue: 0,
-        // get() {
-        //     // Función getter para calcular el total dinámicamente
-        //     return DetalleCompra.sum('Precio', {
-        //         where: { ID_compra: this.ID_compra }
-        //     });}
+        validate: {
+            isDecimal: true
+        }
+    
     },
     ID_cliente: {
-        type: DataTypes.STRING(100),
+        type: DataTypes.INTEGER,
         references: {
             model: Cliente,
-            key: 'Email'
+            key: 'ID_cliente'
         }
     }
 },

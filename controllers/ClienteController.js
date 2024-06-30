@@ -1,15 +1,37 @@
 const Cliente = require('../models/Cliente')
 
+// const crearCliente = async (req, res) => {
+//     const { Nombre, Apellido, Direccion, Telefono, Email } = req.body;
+//     try {
+//         const cliente = await Cliente.create({ Nombre, Apellido, Direccion, Telefono, Email });
+//         res.status(201).json(cliente);
+//     } catch (error) {
+//         res.status(500).json({ error: 'Failed to create cliente', details: error.message });
+//     }
+// }
+
+//dejamos esta funcino aca que seguramente vayamos a quitar 
+//porq no tiene funcionalidad ya que se encarga el controlador de compra
 const crearCliente = async (req, res) => {
-    const { Nombre, Apellido, Direccion, Telefono, Email } = req.body;
+    const { cliente } = req.body;
     try {
-        const cliente = await Cliente.create({ Nombre, Apellido, Direccion, Telefono, Email });
-        res.status(201).json(cliente);
+        const clienteBuscadoOCreado = await Cliente.findOrCreate({
+            where: { Email: cliente.Email},
+            defaults: 
+            {
+                Nombre: cliente.Nombre,
+                Apellido: cliente.Apellido,
+                Direccion: cliente.Direccion,
+                Telefono: cliente.Telefono,
+                Email: cliente.Email
+            }
+            
+        });
+        res.status(201).json(clienteBuscadoOCreado);
     } catch (error) {
         res.status(500).json({ error: 'Failed to create cliente', details: error.message });
     }
 }
-
 const obtenerClientes = async (req, res) => {
     try {
         const clientes = await Cliente.findAll();

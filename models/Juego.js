@@ -9,19 +9,35 @@ const Juego = sequelize.define('Juego', {
     },
     Titulo: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isAlphanumeric:true
+        }
     },
     Descripcion: {
         type: DataTypes.TEXT,
-        allowNull: true
+        allowNull: true,
+        validate: {
+            isAlphanumeric:true
+        }
+    },
+    Categoria: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        validate: {
+            isAlphanumeric:true
+        }
     },
     Desarrollador: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isAlphanumeric:true
+        }
     },
     Publicador: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: true
     },
     Fecha_lanzamiento: {
         type: DataTypes.DATE,
@@ -29,19 +45,28 @@ const Juego = sequelize.define('Juego', {
     },
     Precio: {
         type: DataTypes.DECIMAL(10, 2),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isDecimal: true
+        }
     },
     Plataforma: {
         type: DataTypes.STRING(50),
-        allowNull: false
+        allowNull: true
     },
     URL_imagen: {
         type: DataTypes.STRING(255),
-        allowNull: true
+        allowNull: true,
+        validate: {
+            isUrl: true
+        }
     },
     URL_archivo: {
         type: DataTypes.STRING(255),
-        allowNull: true
+        allowNull: true,
+        validate: {
+            isUrl: true
+        }
     }   
 },{
     timestamps: false

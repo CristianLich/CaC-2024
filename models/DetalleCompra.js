@@ -25,13 +25,20 @@ const DetalleCompra = sequelize.define('DetalleCompra', {
     },
     Precio: {
         type: DataTypes.DECIMAL(10, 2),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isDecimal: true
+        }
     },
     Cantidad: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            min: 1,
+            max: 9 // no permitimos que la persona pueda adquirir mas de 9 juegos por compra
+        }
     }
-});
+},{timestamps: false});
 
 DetalleCompra.belongsTo(Compra, { foreignKey: 'ID_compra' });
 DetalleCompra.belongsTo(Juego, { foreignKey: 'ID_juego' });

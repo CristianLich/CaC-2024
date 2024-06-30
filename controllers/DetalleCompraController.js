@@ -1,5 +1,7 @@
 const DetalleCompra = require('../models/DetalleCompra')
 
+
+//Esta funcion no se utiliza ya q se crea en el Controlador de Compra
 const crearDetalleCompra = async (req, res) => {
     const { ID_compra, ID_juego, Precio, Cantidad } = req.body;
     try {

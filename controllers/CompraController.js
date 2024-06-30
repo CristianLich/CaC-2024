@@ -2,6 +2,7 @@ const Compra = require('../models/Compra')
 const Cliente = require('../models/Cliente')
 const Juego  = require('../models/Juego');
 const DetalleCompra = require('../models/DetalleCompra')
+const sequelize = require('../config/database');
 
 const crearCompra =  async (req, res) => {
     const { cliente, detallesCompra } = req.body;
@@ -14,11 +15,10 @@ const crearCompra =  async (req, res) => {
 
         // Crear el cliente (si es nuevo) o buscarlo si ya existe
         let clienteCreado = await Cliente.findOrCreate({
-            where: { email: cliente.email }, // Usa un campo único como el email para buscar/crear el cliente
-            defaults: cliente,
+            where: { ID_cliente: cliente.ID_cliente }, 
+            defaults: Cliente, // si no se encuentra el cliente en la linea anterior, se utilizan los datos pasador por el usuario para crearlo
             transaction // Asocia la transacción a esta operación
         });
-
         // clienteCreado es un array con el cliente creado o encontrado
         const clienteId = clienteCreado[0].ID_cliente;
 
@@ -27,7 +27,6 @@ const crearCompra =  async (req, res) => {
             Fecha_compra: new Date(),  // Puedes usar la fecha actual
             ID_cliente: clienteId,
         }, { transaction });
-
         let total = 0;
 
         // Crear los detalles de compra asociados a la compra creada
@@ -46,7 +45,6 @@ const crearCompra =  async (req, res) => {
                 total += juego.Precio * detalle.cantidad;
             }
         }
-
         // Actualizar el total de la compra creada
         await Compra.update({ Total: total }, { where: { ID_compra: compra.ID_compra }, transaction });
 

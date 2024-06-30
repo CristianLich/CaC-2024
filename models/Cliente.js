@@ -4,39 +4,48 @@ const sequelize = require('../config/database')
 const Cliente = sequelize.define('Cliente', {
     ID_cliente: {
         type: DataTypes.INTEGER,
-        unique: true,
+        autoIncrement: true,
+        primaryKey: true
     },
     Nombre: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isAlpha:true
+        }
     },
     Apellido: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isAlpha:true
+        }
     },
     Direccion: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: true,
+        validate: {
+            isAlphanumeric:true
+        }
     },
     Telefono: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isNumeric:true
+        }
     },
     Email: {
         type: DataTypes.STRING(100),
         allowNull: false,
-        primaryKey: true
-    },
+        unique: true,
+        validate: {
+            isEmail:true
+        }
+    }
 },
 {
-    hooks: {
-        beforeCreate: async (cliente, options) => {
-            const ultimoCliente = await Cliente.findOne({
-                order: [['ID_cliente', 'DESC']]
-            });
-
-            cliente.ID_cliente = ultimoCliente ? ultimoCliente.ID_cliente + 1 : 1;
-        }
-    }})
+    timestamps: false
+})
 
 module.exports = Cliente;
