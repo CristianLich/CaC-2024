@@ -1,15 +1,23 @@
+require('dotenv').config();
+
+
 const mysql = require("mysql2");
 
 const createDatabase = () => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "",
+      // host: "localhost",
+      // user: "root",
+      // password: "",
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database : process.env.DB_NAME
     });
 
     connection.connect((err) => {
       if (err) {
+        console.error("Error " + err);
         return reject(
           new Error("Error conectando a la base de datos: " + err.message)
         );

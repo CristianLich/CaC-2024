@@ -2,6 +2,34 @@
 
 console.log("tamo activo")
 
+function fetchJuegos() {
+    fetch('/juegos')
+        .then(response => response.json())
+        .then(juegos => {
+            const tbody = document.getElementById('juegosTable').querySelector('tbody');
+            tbody.innerHTML = '';
+
+            juegos.forEach(juego => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${juego.Titulo}</td>
+                    <td>${juego.Categoria}</td>
+                    <td>${juego.Plataforma}</td>
+                    <td>
+                        <button onclick="editarJuego(${juego.ID_juego})">Editar</button>
+                        <button onclick="eliminarJuego(${juego.ID_juego})">Eliminar</button>
+                    </td>
+                `;
+
+                tbody.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Error al obtener los juegos:', error));
+}
+
+
+
 
 async function fetchClientes() {
     try {
@@ -76,3 +104,4 @@ async function eliminarCliente(email) {
     }
 }
 document.addEventListener('DOMContentLoaded', fetchClientes);
+document.addEventListener('DOMContentLoaded', fetchJuegos);

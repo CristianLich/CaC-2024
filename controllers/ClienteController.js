@@ -1,14 +1,5 @@
 const Cliente = require('../models/Cliente')
 
-// const crearCliente = async (req, res) => {
-//     const { Nombre, Apellido, Direccion, Telefono, Email } = req.body;
-//     try {
-//         const cliente = await Cliente.create({ Nombre, Apellido, Direccion, Telefono, Email });
-//         res.status(201).json(cliente);
-//     } catch (error) {
-//         res.status(500).json({ error: 'Failed to create cliente', details: error.message });
-//     }
-// }
 
 //dejamos esta funcino aca que seguramente vayamos a quitar 
 //porq no tiene funcionalidad ya que se encarga el controlador de compra
@@ -21,8 +12,6 @@ const crearCliente = async (req, res) => {
             {
                 Nombre: cliente.Nombre,
                 Apellido: cliente.Apellido,
-                Direccion: cliente.Direccion,
-                Telefono: cliente.Telefono,
                 Email: cliente.Email
             }
             
@@ -43,14 +32,13 @@ const obtenerClientes = async (req, res) => {
 
 const modificarCliente = async (req, res) => {
     const { Email } = req.params;
-    const { Nombre, Apellido, Direccion, Telefono } = req.body;
+    const { Nombre, Apellido } = req.body;
     try {
         const cliente = await Cliente.findByPk(Email);
         if (cliente) {
             cliente.Nombre = Nombre || cliente.Nombre;
             cliente.Apellido = Apellido || cliente.Apellido;
-            cliente.Direccion = Direccion || cliente.Direccion;
-            cliente.Telefono = Telefono || cliente.Telefono;
+
             await cliente.save();
             res.status(200).json(cliente);
         } else {

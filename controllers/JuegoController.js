@@ -3,6 +3,7 @@ const Juego  = require('../models/Juego');
 const CrearJuego = async (req, res) => {
     const { Titulo, 
         Descripcion, 
+        Categoria,
         Desarrollador, 
         Publicador, 
         Fecha_lanzamiento, 
@@ -10,7 +11,7 @@ const CrearJuego = async (req, res) => {
         URL_imagen, 
         URL_archivo } = req.body;
     try {
-        const juego = await Juego.create({ Titulo, Descripcion, Desarrollador, Publicador, Fecha_lanzamiento, Precio, Plataforma, URL_imagen, URL_archivo });
+        const juego = await Juego.create({ Titulo, Descripcion,Categoria, Desarrollador, Publicador, Fecha_lanzamiento, Precio, Plataforma, URL_imagen, URL_archivo });
         res.status(201).json(juego);
     } catch (error) {
         res.status(500).json({ error: 'Error al intentar crear juego juego', details: error.message });
@@ -38,12 +39,13 @@ const ObtenerJuego = async (req, res) => {
 
 const ModificarJuego = async (req, res) => {
     const { ID_juego } = req.params;
-    const { Titulo, Descripcion, Desarrollador, Publicador, Fecha_lanzamiento, Precio, Plataforma, URL_imagen, URL_archivo } = req.body;
+    const { Titulo, Descripcion,Categoria, Desarrollador, Publicador, Fecha_lanzamiento, Precio, Plataforma, URL_imagen, URL_archivo } = req.body;
     try {
         const juego = await Juego.findByPk(ID_juego);
         if (juego) {
             juego.Titulo = Titulo || juego.Titulo;
             juego.Descripcion = Descripcion || juego.Descripcion;
+            juego.Categoria = Categoria || juego.Categoria;
             juego.Desarrollador = Desarrollador || juego.Desarrollador;
             juego.Publicador = Publicador || juego.Publicador;
             juego.Fecha_lanzamiento = Fecha_lanzamiento || juego.Fecha_lanzamiento;

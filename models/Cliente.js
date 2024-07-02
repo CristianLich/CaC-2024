@@ -21,20 +21,6 @@ const Cliente = sequelize.define('Cliente', {
             isAlpha:true
         }
     },
-    Direccion: {
-        type: DataTypes.STRING(100),
-        allowNull: true,
-        validate: {
-            isAlphanumeric:true
-        }
-    },
-    Telefono: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-        validate: {
-            isNumeric:true
-        }
-    },
     Email: {
         type: DataTypes.STRING(100),
         allowNull: false,
