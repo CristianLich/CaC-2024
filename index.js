@@ -46,12 +46,15 @@ sequelize.authenticate()
     .catch(err => {
         console.error('Unable to connect to the database:', err);
     });
-
-createDatabase().then(() => {
-    return sequelize.sync()
-        .then( console.log("Tablas Creadas")) // sincronizamos los modelos de sequelize con la base de datos y retorna una promesa
-        .then(() => app.listen(PORT, () => {// Inicia el servidor Express
-            console.log(`Server running at http://localhost:${PORT}`);
-        }))
-        .catch((err) => console.log('Error syncing database:', err));
-})
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+//createDatabase().then(() => {
+ //   return sequelize.sync()
+//        .then( console.log("Tablas Creadas")) // sincronizamos los modelos de sequelize con la base de datos y retorna una promesa
+ //       .then(() => app.listen(PORT, () => {// Inicia el servidor Express
+  //          console.log(`Server running at http://localhost:${PORT}`);
+  //      }))
+  //      .catch((err) => console.log('Error syncing database:', err));
+//})
+//
