@@ -38,7 +38,14 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: err.message.details });
 });
 
-
+// Verificar la conexión
+sequelize.authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
 
 createDatabase().then(() => {
     return sequelize.sync()
