@@ -2,8 +2,8 @@
 const { Sequelize } = require("sequelize");
 
 //Creamos conexion a la base de datos para poder crear las tablas a traves de los modelos
-const sequelize = new Sequelize("sql10717329", "sql10717329", "MCs2tfYW53", {
-    host: "sql10.freesqldatabase.com",
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     dialect: "mysql",
 });
 
