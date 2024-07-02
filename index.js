@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const sequelize = require('./config/database');
 const createDatabase = require('./config/initDB')
-
+//
 //Rutas
 const JuegoRoutes = require('./routes/JuegoRoutes');
 const CompraRoutes = require('./routes/CompraRoutes');
