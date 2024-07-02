@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json()); // Middleware para parsear cuerpos de petición en formato JSON
 
 
-app.use(express.static('public')); // Middleware para servir archivos estáticos desde el directorio 'public'
+app.use(express.static(path.join(__dirname, 'public'))); // Middleware para servir archivos estáticos desde el directorio 'public'
 // app.get('/', (req, res) => {
 //     res.sendFile(path.join(__dirname, 'public', 'views', 'index.html'));
 //   });
