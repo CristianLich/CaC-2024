@@ -1,0 +1,226 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('https://res.cloudinary.com/dkojgz9s6/image/upload/v1719844233/CodoACodoNJS/fondotienda.png');
+}
+
+
+/* Estilos generales */
+:root {
+    --color-primario: #000123;
+    --color-secundario: #FF0F7B;
+    --color-acento: #00FFC9;
+    --color-textos: #f2f2f2;
+    --color-negro: #101010;
+  
+  
+    --color-neon: hsl(317 100% 54%);
+  
+  }
+
+/*---------------------------- HEADER ----------------------------*/
+header {
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Outfit;
+    flex-wrap: wrap;
+  }
+  
+  header p {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--color-secundario);
+    font-weight: bold;
+    font-size: xx-large;
+    
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding-right: 1.25rem;
+  
+    @media (width < 480px){
+      padding: 0;
+    }
+  }
+  
+  header nav ul li {
+    margin: 0 10px;
+    
+  }
+  
+  header nav ul li a {
+    color: var(--color-acento);
+    text-decoration: none;
+    font-size: clamp(1.5rem, 2.3vw, 4rem);
+  }
+  header nav ul li a:hover {
+    color: #f2f2f2;
+    text-shadow: 0 0 10px #f2f2f2,
+                 0 0 20px #f2f2f2,
+                 0 0 40px #f2f2f2,
+                 0 0 80px #f2f2f2,
+                 0 0 120px #f2f2f2;
+  }
+  
+  .logotipo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  
+    @media (width < 480px ){
+        p {
+          display: none;
+        }
+        img {
+          margin-left: 1rem;
+        }
+    }
+  }
+
+
+/* ----- FIN HEADER ----- */
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-y: auto;
+    margin: 40px; /* Margen alrededor del contenedor */
+    
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    flex: 1;
+    min-width: 200px;
+    height: 200px;
+    background-color: rgba(173, 216, 230, 0.192);
+    margin: 5px;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.item-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.price-button-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 4px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.price {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.buy-button {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buy-button:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 1200px) and (min-width: 768px) {
+    .row {
+        justify-content: space-between;
+    }
+
+    .item {
+        flex-basis: calc(50% - 20px);
+    }
+
+    .row:nth-child(2) .item:nth-child(3), 
+    .row:nth-child(4) .item:nth-child(3) {
+        flex-basis: calc(100% - 80px);
+    }
+}
+
+@media (max-width: 767px) {
+    
+    .row {
+        padding: 40px; /* Añade espacio alrededor de todos los items dentro de la fila */
+    }
+    
+    .item {
+        flex-basis: calc(100% - 20px);
+    }
+}
+
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------- FOOTER --------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------*/
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  background-color: var(--color-negro);
+  bottom: 0;
+}
+
+/* Estilos para los iconos de redes sociales en el footer */
+
+#footer .social-icons {
+  display: flex;
+}
+
+#footer .social-icons a {
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  color: #00FFC9;
+}
+
+#footer .social-icons a:hover {
+  color: var(--color-secundario);
+}
+
+#footer .social-icons i {
+  font-size: 2em;
+}
