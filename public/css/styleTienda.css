@@ -4,8 +4,6 @@ body {
     padding: 0;
     box-sizing: border-box;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
     background-image: url('https://res.cloudinary.com/dkojgz9s6/image/upload/v1719844233/CodoACodoNJS/fondotienda.png');
 }
 
@@ -83,7 +81,7 @@ header {
     align-items: center;
     gap: 16px;
   
-    @media (width < 480px ){
+    @media (width < 768px ){
         p {
           display: none;
         }
@@ -102,7 +100,7 @@ header {
     flex-direction: column;
     justify-content: space-around;
     overflow-y: auto;
-    margin: 40px; /* Margen alrededor del contenedor */
+    margin: 80px 40px 60px 40px; /* Margen alrededor del contenedor */
     
 }
 
@@ -121,6 +119,7 @@ header {
     padding: 20px;
     box-sizing: border-box;
     position: relative;
+    border-radius: 10px;
 }
 
 .item-footer {
@@ -140,18 +139,19 @@ header {
     border: 1px solid #ccc;
     padding: 4px;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: var(--color-primario);
 }
 
 .price {
     font-size: 1.2em;
     font-weight: bold;
     margin-right: 10px;
+    color: var(--color-textos);
 }
 
 .buy-button {
     padding: 5px 10px;
-    background-color: #28a745;
+    background-color: var(--color-secundario);
     color: white;
     border: none;
     cursor: pointer;
@@ -159,7 +159,8 @@ header {
 }
 
 .buy-button:hover {
-    background-color: #218838;
+    background-color: var(--color-acento);
+    color: var(--color-negro);
 }
 
 @media (max-width: 1200px) and (min-width: 768px) {

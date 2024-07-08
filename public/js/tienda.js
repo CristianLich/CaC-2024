@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function addToCart(itemId) {
     // Acá la lógica para linkear el producto al carrito.
-    console.log(`Agregando item ${itemId} al carrito`);
+    console.log(`Haz agregado ${itemId} al carrito`);
+    // DEBERIA SEÑALAR EL TITULO NO EL ID.
     
 }
