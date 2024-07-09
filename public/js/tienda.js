@@ -1,6 +1,5 @@
 // codigo de la tienda
 
-console.log("tamo activo")
 
 function fetchJuegos() {
     fetch('/juegos')
@@ -55,53 +54,6 @@ async function fetchClientes() {
         console.error('Error al obtener los clientes:', error);
     }
 }
-
-async function editarCliente(id) {
-    // Aquí podrías mostrar un formulario para editar el cliente.
-    const nuevoNombre = prompt('Ingresa el nuevo nombre:');
-    if (nuevoNombre) {
-        try {
-            const response = await fetch(`/clientes/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ Nombre: nuevoNombre })
-            });
-
-            if (response.ok) {
-                alert('Cliente actualizado exitosamente.');
-                fetchClientes();
-            } else {
-                alert('Error al actualizar el cliente.');
-            }
-        } catch (error) {
-            console.error('Error al actualizar el cliente:', error);
-        }
-    }
-}
-
-async function eliminarCliente(email) {
-    if (confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
-        try {
-            const response = await fetch(`/clientes/${email}`, {
-                method: 'DELETE'
-            });
-
-            if (response.ok) {
-                alert('Cliente eliminado exitosamente.');
-                fetchClientes();
-            } else {
-                alert('Error al eliminar el cliente.');
-            }
-        } catch (error) {
-            console.error('Error al eliminar el cliente:', error);
-        }
-    }
-}
-document.addEventListener('DOMContentLoaded', fetchClientes);
-document.addEventListener('DOMContentLoaded', fetchJuegos);
-
 
 
 // LOGICA DE LAS TARJETAS Y EL CONTENEDOR DE LOS JUEGOS.
