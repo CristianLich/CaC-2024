@@ -1,5 +1,4 @@
-
-//--------------- Sección CONTACTANOS - FORMULARIO
+//--------------- SECTION CONTACTANOS - FORMULARIO ---------------
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
@@ -63,36 +62,55 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-//--------------------------------------------------------------------------
+// SECTION CONTENIDO
 
-    let slideIndex = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+    let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
-    const slidesContainer = document.querySelector('.slides');
-    const totalSlides = slides.length;
 
-    function showSlides(n) {
-        slideIndex = (n + totalSlides) % totalSlides;
-        slidesContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+    function showSlide(index) {
+        if (index >= slides.length) currentSlide = 0;
+        if (index < 0) currentSlide = slides.length - 1;
+        slides.forEach(slide => slide.style.display = 'none');
+        slides[currentSlide].style.display = 'flex';
     }
 
-    function changeSlide(n) {
-        showSlides(slideIndex + n);
-        resetAutoSlide();
+    function changeSlide(direction) {
+        currentSlide += direction;
+        showSlide(currentSlide);
     }
 
-    function autoSlide() {
-        autoSlideInterval = setInterval(() => {
-            changeSlide(1);
-        }, 4000);
-    }
+    document.querySelector('.prev').addEventListener('click', () => changeSlide(-1));
+    document.querySelector('.next').addEventListener('click', () => changeSlide(1));
 
-    function resetAutoSlide() {
-        clearInterval(autoSlideInterval);
-        autoSlide();
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+        showSlide(currentSlide);
+    });
+});
 
-    let autoSlideInterval = setInterval(() => {
-        changeSlide(1);
-    }, 4000);
 
-    showSlides(slideIndex);
+// BOTÓN IR ARRIBA
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    
+    // ... Oculta el botón de "Ir arriba" al cargar la página
+    document.getElementById("boton-arriba").style.display = "none";
+
+    // Mostrar u ocultar el botón de "Ir arriba" al hacer scroll
+    window.addEventListener("scroll", function() {
+        var botonArriba = document.getElementById("boton-arriba");
+        var seccionInicio = document.getElementById("inicio");
+        var scrollY = window.scrollY || window.pageYOffset;
+
+        // Si el scroll está más abajo de la sección de inicio, mostrar el botón :D
+        if (scrollY > seccionInicio.offsetHeight) {
+            botonArriba.style.display = "block";
+        } else {
+            botonArriba.style.display = "none";
+        }
+    });
+});
+
+

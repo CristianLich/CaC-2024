@@ -3,74 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/styleTienda.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1a668f227d.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Tienda</title>
 </head>
 <body>
-    <section>
-        <h1 class="texto-tienda">Te acercamos los juegos que estas buscando</h1>
-        <p>Desliza hacia abajo y descubri tu proximo juego favorito</p>
-    </section>
+    <header>
+        <div class="logotipo">
+          <p>GameMaster</p> 
+          <img src="https://res.cloudinary.com/dkojgz9s6/image/upload/v1715800919/CodoACodoNJS/logo_kuxdfd.png" alt="logo"
+              width="40" height="40">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/public/index.html#contenido">Juegos</a></li>
+            <li><a href="/public/index.html#nosotros">Nosotros</a></li>
+            <li><a href="/public/index.html#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
 
-    <!-- Prueba -->
-    <h1>Lista de Clientes</h1>
-    <table id="clientesTable">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Dirección</th>
-                <th>Teléfono</th>
-                <th>Email</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Clientes serán listados aquí -->
-        </tbody>
-    </table>
-
-    <h1>Lista de Juegos</h1>
-    <table id="juegosTable">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Género</th>
-                <th>Plataforma</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Juegos serán listados aquí -->
-        </tbody>
-    </table>
-
-
-
-
-
-
-
-
-
-
+    <div class="container" id="container"></div>
 
     <footer id="footer">
-        <div class="social-icons">
-          <a href="https://facebook.com"><i class="fa-brands fa-facebook" style="color: #ffffff;"
-              aria-hidden="true"></i></a>
-          <a href="https://twitter.com"><i class="fa-brands fa-twitter" style="color: #ffffff;" aria-hidden="true"></i></a>
-          <a href="https://instagram.com"><i class="fa-brands fa-instagram" style="color: #ffffff;"
-              aria-hidden="true"></i></a>
-          <a href="https://pinterest.com"><i class="fa-brands fa-pinterest" style="color: #ffffff;"
-              aria-hidden="true"></i></a>
-        </div>
-      </footer>
+      <div class="social-icons">
+        <a href="https://facebook.com"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="https://instagram.com"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://discord.com"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
+      </div>
+    </footer>
 
-      <script src="/js/tienda.js"></script>
+      <script src="/public/js/tienda.js"></script>
 </body>
 </html>
