@@ -6,13 +6,13 @@ const mysql = require("mysql2");
 const createDatabase = () => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection({
-      // host: "localhost",
-      // user: "root",
-      // password: "",
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database : process.env.DB_NAME
+      host: "localhost",
+      user: "root",
+      password: "",
+      // host: process.env.DB_HOST,
+      // user: process.env.DB_USER,
+      // password: process.env.DB_PASSWORD,
+      // database : process.env.DB_NAME
     });
 
     connection.connect((err) => {
@@ -26,7 +26,7 @@ const createDatabase = () => {
       console.log("Conectado a la base de datos");
 
       connection.query(
-        "CREATE DATABASE IF NOT EXISTS videogame_store",
+        "CREATE DATABASE IF NOT EXISTS gamemaster_db",
         (err, results) => {
           if (err) {
             console.error("Error creando la base de datos", err);
@@ -35,13 +35,13 @@ const createDatabase = () => {
 
           console.log("Base de datos creada");
 
-          connection.changeUser({ database: "videogame_store" }, (err) => {
+          connection.changeUser({ database: "gamemaster_db" }, (err) => {
             if (err) {
-              console.error("Error al cambiar a videogame_store", err);
+              console.error("Error al cambiar a gamemaster_db", err);
               return;
             }
 
-            console.log("Cambiado a la base de datos videogame_store");
+            console.log("Cambiado a la base de datos gamemaster_db");
 
             // Cerrar la conexión MySQL
             connection.end((err) => {

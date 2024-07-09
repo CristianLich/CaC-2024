@@ -47,10 +47,6 @@ async function fetchClientes() {
                 <td>${cliente.Direccion}</td>
                 <td>${cliente.Telefono}</td>
                 <td>${cliente.Email}</td>
-                <td>
-                    <button onclick="editarCliente('${cliente.Email}')">Editar</button>
-                    <button onclick="eliminarCliente('${cliente.Email}')">Eliminar</button>
-                </td>
             `;
 
             tbody.appendChild(row);

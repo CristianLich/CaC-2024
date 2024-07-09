@@ -37,6 +37,7 @@ const crearCompra =  async (req, res) => {
                 await DetalleCompra.create({
                     ID_compra: compra.ID_compra,
                     ID_juego: detalle.ID_juego,
+                    // Titulo: juego.Nombre, // agregado el 03/07
                     Precio: juego.Precio,
                     Cantidad: detalle.cantidad
                 }, { transaction });

@@ -31,7 +31,12 @@ const ObtenerJuego = async (req, res) => {
     try {
         const {ID_juego} = req.params;
         const juego = await Juego.findByPk(ID_juego);
-        res.status(200).json(juego);
+        if (juego) {
+            res.status(200).json(juego);
+        } else {
+            res.status(404).json({ error: 'Juego not found' });
+        }
+        // res.status(200).json(juego);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch juegos' });
     }

@@ -4,7 +4,7 @@ const {crearCliente, obtenerClientes, modificarCliente, eliminarCliente} =requir
 
 router.get('/clientes', obtenerClientes);
 router.post('/clientes', crearCliente);
-router.put('/clientes/:Email', modificarCliente);
-router.delete('//clientes/:Email', eliminarCliente);
+router.put('/clientes/:ID_cliente', modificarCliente);
+router.delete('/clientes/:ID_cliente', eliminarCliente);
 
 module.exports = router;

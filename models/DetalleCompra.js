@@ -22,7 +22,14 @@ const DetalleCompra = sequelize.define('DetalleCompra', {
             model: Juego,
             key: 'ID_juego'
         }
-    },
+    }, // agregado 03/07
+    // Titulo: {
+    //     type: DataTypes.STRING(100),
+    //     allowNull: false,
+    //     validate: {
+    //         isAlphanumeric: true
+    //     }
+    // },
     Precio: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,

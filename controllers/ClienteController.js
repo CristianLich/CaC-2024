@@ -31,10 +31,10 @@ const obtenerClientes = async (req, res) => {
 }
 
 const modificarCliente = async (req, res) => {
-    const { Email } = req.params;
+    const { ID_cliente } = req.params;
     const { Nombre, Apellido } = req.body;
     try {
-        const cliente = await Cliente.findByPk(Email);
+        const cliente = await Cliente.findByPk(ID_cliente);
         if (cliente) {
             cliente.Nombre = Nombre || cliente.Nombre;
             cliente.Apellido = Apellido || cliente.Apellido;
@@ -50,9 +50,9 @@ const modificarCliente = async (req, res) => {
 }
 
 const eliminarCliente = async (req, res) => {
-    const { Email } = req.params;
+    const { ID_cliente } = req.params;
     try {
-        const cliente = await Cliente.findByPk(Email);
+        const cliente = await Cliente.findByPk(ID_cliente);
         if (cliente) {
             await cliente.destroy();
             res.status(204).send();
