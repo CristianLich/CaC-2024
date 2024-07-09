@@ -113,8 +113,8 @@ async function eliminarCliente(email) {
         }
     }
 }
-document.addEventListener('DOMContentLoaded', fetchClientes);
-document.addEventListener('DOMContentLoaded', fetchJuegos);
+//document.addEventListener('DOMContentLoaded', fetchClientes);
+
 
 
 
@@ -125,3 +125,6 @@ function addToCart(itemId) {
     // DEBERIA SEÑALAR EL TITULO NO EL ID.
     
 }
+
+
+document.addEventListener('DOMContentLoaded', fetchJuegos);
