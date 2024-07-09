@@ -10,21 +10,34 @@ function fetchJuegos() {
             const juegos = juego.length; // Acá definimos los juegos en total para el contenedor, sencillo de modificar.
             const juegosPerRowPattern = [4, 3, 4, 3]; // Patrón de juegos por fila.
 
-            juegos.forEach(juego => {
-                const row = document.createElement('tr');
+            let currentItem = 1;
+            let patternIndex = 0;
 
-                row.innerHTML = `
-                    <td>${juego.Titulo}</td>
-                    <td>${juego.Categoria}</td>
-                    <td>${juego.Plataforma}</td>
-                    <td>
-                        <button onclick="editarJuego(${juego.ID_juego})">Editar</button>
-                        <button onclick="eliminarJuego(${juego.ID_juego})">Eliminar</button>
-                    </td>
-                `;
+            while (currentItem <= juegos) {
+                const row = document.createElement('div');
+                row.classList.add('row');
 
-                tbody.appendChild(row);
-            });
+                const juegosInRow = juegosPerRowPattern[patternIndex];
+
+                for (let i = 0; i < juegosInRow && currentItem <= juegos; i++) {
+                    const item = document.createElement('div');
+                    item.classList.add('item');
+                    item.innerHTML = `
+                        <p>${juego[currentItem-1].Titulo}</p>
+                        <div class="item-footer">
+                            <div class="price-button-container">
+                                <span id="price-${juego[currentItem-1].Precio}" class="price">$${juego[currentItem-1].Precio }</span>
+                                <a href="#" class="buy-button" onclick="addToCart(${juego[currentItem-1]})">Comprar</a>
+                            </div>
+                        </div>
+                    `;
+                    row.appendChild(item);
+                    currentItem++;
+                }
+
+                container.appendChild(row);
+                patternIndex = (patternIndex + 1) % juegosPerRowPattern.length;
+            }
         })
         .catch(error => console.error('Error al obtener los juegos:', error));
 }
