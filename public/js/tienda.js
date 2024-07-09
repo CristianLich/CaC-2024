@@ -2,7 +2,7 @@
 
 
 function fetchJuegos() {
-    fetch('https://backend-project-59kzhx5q6-cristianlichs-projects.vercel.app/juegos')
+    fetch('/juegos')
         .then(response => response.json())
         .then(juego => {
             console.log(juego.data);
