@@ -9,7 +9,7 @@ body {
   
 /* Estilos generales */
 :root {
-    --color-primario: #000123;
+    --color-primario: #eaeaef;
     --color-secundario: #FF0F7B;
     --color-acento: #00FFC9;
     --color-textos: #f2f2f2;
@@ -58,3 +58,8 @@ body{
     color: #f2f2f2;
     background-color: aliceblue;
 };
+
+#tabla-responsive {
+    background-color: aliceblue;
+    color:aliceblue;
+}

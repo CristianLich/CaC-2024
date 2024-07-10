@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juegos</title>
+    <link rel="stylesheet" href="/public/css/juegos.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        /* Estilos adicionales para el dropdown */
+        .panel {
+            display: none; /* Ocultar todos los paneles por defecto */
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>DASHBOARD</h2>
+        <ul class="panel-button">
+            <li><a href="./dataTables.html">Clientes</a></li>
+            <li><a href="./juegos.html">Juegos</a></li>
+            <li><a href="./registro.html">Registros</a></li>
+            <li><a href="./dashboard.html">Panel principal</a></li>
+        </ul>
+    </div>
+    <div class="form-container">
+        <h2>Acciones de Juegos</h2>
+        
+        <!-- Dropdown para seleccionar la acción -->
+        <select id="accion-juego" onchange="mostrarPanel(this.value)">
+            <option value="">Selecciona una acción</option>
+            <option value="crear">Crear juego</option>
+            <option value="modificar">Modificar juego</option>
+            <option value="borrar">Borrar juego</option>
+        </select>
+        
+        <!-- Panel para Crear Nuevo Juego -->
+        <div class="panel panel-create" id="panel-crear">
+            <h3>Crear Nuevo Juego</h3>
+            <form>
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" name="marca" required>
+                
+                <label for="precio">Precio:</label>
+                <input type="text" id="precio" name="precio" required>
+                
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="">Selecciona una categoría</option>
+                    <option value="accion">Acción</option>
+                    <option value="aventura">Aventura</option>
+                    <option value="estrategia">Estrategia</option>
+                    <option value="rol">Rol</option>
+                    <option value="deportes">Deportes</option>
+                </select>
+                
+                <label for="resena">Breve Reseña:</label>
+                <textarea id="resena" name="resena" rows="4"></textarea>
+                
+                <button type="submit">Crear Juego</button>
+            </form>
+        </div>
+        
+        <!-- Panel para Modificar Juego -->
+        <div class="panel panel-modify" id="panel-modificar">
+            <h3>Modificar Juego</h3>
+            <form>
+                <label for="modificar-juego">Selecciona un juego:</label>
+                <select id="modificar-juego" name="modificar-juego" required>
+                    <option value="">Selecciona un juego</option>
+                    <option value="juego1">Juego 1</option>
+                    <option value="juego2">Juego 2</option>
+                    <option value="juego3">Juego 3</option>
+                </select>
+                
+                <label for="nuevo-precio">Nuevo Precio:</label>
+                <input type="text" id="nuevo-precio" name="nuevo-precio">
+                
+                <label for="nueva-categoria">Nueva Categoría:</label>
+                <select id="nueva-categoria" name="nueva-categoria">
+                    <option value="">Selecciona una categoría</option>
+                    <option value="accion">Acción</option>
+                    <option value="aventura">Aventura</option>
+                    <option value="estrategia">Estrategia</option>
+                    <option value="rol">Rol</option>
+                    <option value="deportes">Deportes</option>
+                </select>
+                
+                <label for="nueva-resena">Nueva Reseña:</label>
+                <textarea id="nueva-resena" name="nueva-resena" rows="4"></textarea>
+                
+                <button type="submit">Modificar Juego</button>
+            </form>
+        </div>
+        
+        <!-- Panel para Borrar Juego -->
+        <div class="panel panel-delete" id="panel-borrar">
+            <h3>Borrar Juego</h3>
+            <form>
+                <label for="borrar-juego">Selecciona un juego:</label>
+                <select id="borrar-juego" name="borrar-juego" required>
+                    <option value="">Selecciona un juego</option>
+                    <option value="juego1">Juego 1</option>
+                    <option value="juego2">Juego 2</option>
+                    <option value="juego3">Juego 3</option>
+                </select>
+                
+                <button type="submit">Borrar Juego</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/scripts.js"></script>
+    <script>
+        // Función para mostrar el panel correspondiente según la opción seleccionada
+        function mostrarPanel(accion) {
+            // Ocultar todos los paneles
+            document.querySelectorAll('.panel').forEach(function(panel) {
+                panel.style.display = 'none';
+            });
+
+            // Mostrar el panel correspondiente
+            if (accion === 'crear') {
+                document.getElementById('panel-crear').style.display = 'block';
+            } else if (accion === 'modificar') {
+                document.getElementById('panel-modificar').style.display = 'block';
+            } else if (accion === 'borrar') {
+                document.getElementById('panel-borrar').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
