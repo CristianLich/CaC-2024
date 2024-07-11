@@ -210,3 +210,9 @@ li .delete:hover {
     color: white;
     font-weight: bold;
 }
+.table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px; /* Ajusta este valor según tus necesidades */
+}
