@@ -10,7 +10,6 @@ const Juego = sequelize.define('Juego', {
     Titulo: {
         type: DataTypes.STRING(100),
         allowNull: false,
-
     },
     Descripcion: {
         type: DataTypes.TEXT,

@@ -142,11 +142,26 @@ tablaJuegos
 
 //CREAR JUEGOS
 document.getElementById("crearJuego").addEventListener("click", function() {
-    let formData = new FormData(document.getElementById("crearForm"));
-    let data = {};
+    // let formData = new FormData(document.getElementById("crearForm"));
+    // let data = {};
+    let form = document.getElementById("crearForm");
+  let formData = new FormData(form);
+  let data = {};
+
+  // Validar que todos los campos requeridos están completos
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
     formData.forEach((value, key) => {
-      data[key] = value;
+        if (key === "Precio") {
+            data[key] = parseFloat(value);;
+        }else {
+            data[key] = value;
+        }
     });
+    console.log(data);
+
     fetch(`/juegos`, {
       method: "POST",
       headers: {
@@ -158,11 +173,12 @@ document.getElementById("crearJuego").addEventListener("click", function() {
         if (response.ok) {
           return response.json();
         }
-        throw new Error("ERROR EN LA RESPUESTA.");
+        throw new Error("ERROR EN LA RESPUESTA.",response.message ,response.status);
       })
       .then((responseData) => {
         console.log("Datos guardados exitosamente:", responseData);
         $("#crearModal").modal("hide");
+        document.getElementById("crearForm").reset();
         tablaJuegos.ajax.reload();
         alert("Juego creado correctamente");
       })
@@ -272,6 +288,7 @@ document.getElementById("btnActivar").addEventListener("click", function(){
               if (response.ok) {
                 return response.json();
               }
+              alert('ERROR AL INTENTAR CREAR EL JUEGO')
               throw new Error("ERROR EN LA RESPUESTA.");
             })
             .then((responseData) => {
@@ -299,48 +316,6 @@ document.getElementById("btnActivar").addEventListener("click", function(){
 
 
 
-
-
-
-// let listaClientes;
-
-// //#region CRUD CLIENTES
-// function getAll_Clients() {
-//     function handleResponse(response)  {
-//         if (!response.ok){
-//             return Promise.reject(response);
-//         }
-//         else{
-//             return response.json();
-//         }
-//     }
-//     fetch('/clientes')
-//         .then(response => handleResponse(response))
-//         .then(
-//             (dataClientes) => {
-//                 listaClientes = dataClientes;
-//                 let miTablaClientes = $('#tablaClientes').DatatablaJuegos();
-
-//                 miTablaClientes.clear();
-
-//                 //Agrego las filas a la tabla
-//                 dataClientes.forEach(cliente => {
-//     const fila = [cliente.Nombre, cliente.Apellido , cliente.Email];
-//    fila.push(`<td><span data-bs-toggle="modal" data-bs-target="#M-Editar" class="material-symbols-outlined table-toggle">manage_accounts</span></td>`)
-//     fila.push(`<td><span class="material-symbols-outlined table-toggle" data-bs-target="#EliminarCliente">delete</span></td>`)
-//                     miTablaClientes.row.add(fila).draw();
-//                 });
-//             }
-//         )
-//         .catch(error => {
-//             console.log(error.message);
-//         })
-//         .finally(() => {
-//             console.log("Promesa finalizada (resuelta o rechazada)");
-//         });
-// }
-
-// document.addEventListener('DOMContentLoaded', getAll_Clients);
 
 // codigo para DataTable
 // $(document).ready(function() {

@@ -90,21 +90,21 @@
 
 
 
-    <div class="modal" id="crearModal" tabindex="-1" aria-labelledby="crearModal" aria-hidden="true">
+    <div class="modal" id="crearModal" tabindex="-1" aria-labelledby="crearJuegoModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="crearModal">Añadir Juego</h5>
+              <h5 class="modal-title" id="crearJuegoModal">Añadir Juego</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
     
     
-              <form id="crearForm" class="form-floating row g-3">
+              <form id="crearForm" class="form-floating row g-3" >
     
                 <div class=" mb-3">
                     <label class="form-label" for="Titulo">Titulo</label>
-                    <input type="text" class="form-control" id="Titulo" name="Titulo">
+                    <input type="text" class="form-control" id="Titulo" name="Titulo" maxlength="100" required pattern="^[a-zA-Z0-9\s]+$" title="El título solo debe contener letras, números y espacios.">
                 </div>
                 <div class=" mb-3">
                   <label class="form-label" for="Descripcion">Descripcion</label>
@@ -112,27 +112,27 @@
                 </div>
                 <div class="col-md-9 mb-3">
                   <label class="form-label" for="Desarrollador">Desarrollador</label>
-                  <input type="text" class="form-control" id="Desarrollador" name="Desarrollador">
+                  <input type="text" class="form-control" id="Desarrollador" name="Desarrollador" maxlength="100" required pattern="^[a-zA-Z\s]+$" title="El desarrollador solo debe contener letras y espacios.">
                 </div>
                 <div class="col-md-9 mb-3">
                   <label class="form-label" for="Publicador">Publicador</label>
-                  <input type="text" class="form-control" id="Publicador" name="Publicador">
+                  <input type="text" class="form-control" id="Publicador" name="Publicador" maxlength="100" pattern="^[a-zA-Z\s]+$" title="El publicador solo debe contener letras y espacios.">
                 </div>
                 <div class="col-md-4 mb-3">
                   <label class="form-label" for="Categoria">Categoria</label>
-                  <input type="text" class="form-control" id="Categoria" name="Categoria">
+                  <input type="text" class="form-control" id="Categoria" name="Categoria" maxlength="50" required pattern="^[a-zA-Z\s]+$" title="La categoría solo debe contener letras y espacios.">
                 </div>
                 <div class=" col-md-2 mb-3">
                   <label class="form-label" for="Precio">Precio</label>
-                  <input type="text" class="form-control" id="Precio" name="Precio">
+                  <input type="number" class="form-control" id="Precio" name="Precio" min="1" max="999" required pattern="^\d+(\.\d{1,2})?$" title="El precio debe ser un número decimal válido con hasta dos decimales.">
                 </div>
                 <div class="col-md-3 mb-3">
                   <label class="form-label" for="Plataforma">Plataforma</label>
-                  <input type="text" class="form-control" id="Plataforma" name="Plataforma">
+                  <input type="text" class="form-control" id="Plataforma" name="Plataforma" maxlength="50" pattern="^[a-zA-Z\s]+$" title="La plataforma solo debe contener letras y espacios.">
                 </div>
                 <div class=" mb-3">
                   <label class="form-label" for="URLImagen">URL de la Imagen</label>
-                  <input type="text" class="form-control" id="URLImagen" name="URLImagen">
+                  <input type="text" class="form-control" id="URLImagen" name="URLImagen" maxlength="255" pattern="^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$" title="La URL de la imagen debe ser válida.">
                 </div>
               </form>
             </div>
