@@ -4,6 +4,7 @@ const Juego  = require('../models/Juego');
 const DetalleCompra = require('../models/DetalleCompra')
 const sequelize = require('../config/database');
 
+
 const crearCompra =  async (req, res) => {
     const { cliente, detallesCompra } = req.body;
 

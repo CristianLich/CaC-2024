@@ -1,201 +1,234 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    height: 100vh;
-    background-image: url('https://res.cloudinary.com/dkojgz9s6/image/upload/v1719844233/CodoACodoNJS/fondotienda.png');
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  background-image: url('https://res.cloudinary.com/dkojgz9s6/image/upload/v1719844233/CodoACodoNJS/fondotienda.png');
+  background-repeat: no-repeat; /* Para evitar que se repita la imagen */
+  background-size: cover; /* Para hacer que la imagen cubra toda el área visible */
+  background-attachment: fixed; 
+}
+
+/* Variables de color */
+:root {
+  --color-primario: #000123;
+  --color-secundario: #FF0F7B;
+  --color-acento: #00FFC9;
+  --color-textos: #f2f2f2;
+  --color-negro: #101010;
+  --color-neon: hsl(317 100% 54%);
+}
+
+/* Estilos del header */
+header {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+  flex-wrap: wrap;
+}
+
+header p {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--color-secundario);
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding-right: 1.25rem;
+}
+
+header nav ul li {
+  margin: 0 10px;
+}
+
+header nav ul li a {
+  color: var(--color-acento);
+  text-decoration: none;
+  font-size: clamp(1.5rem, 2.3vw, 4rem);
+}
+
+header nav ul li a:hover {
+  color: #f2f2f2;
+  text-shadow: 0 0 10px #f2f2f2,
+               0 0 20px #f2f2f2,
+               0 0 40px #f2f2f2,
+               0 0 80px #f2f2f2,
+               0 0 120px #f2f2f2;
+}
+
+.logotipo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .logotipo p {
+      display: none;
+  }
+  .logotipo img {
+      margin-left: 1rem;
+  }
 }
 
 
-/* Estilos generales */
-:root {
-    --color-primario: #000123;
-    --color-secundario: #FF0F7B;
-    --color-acento: #00FFC9;
-    --color-textos: #f2f2f2;
-    --color-negro: #101010;
-  
-  
-    --color-neon: hsl(317 100% 54%);
-  
-  }
-
-/*---------------------------- HEADER ----------------------------*/
-header {
-    background-color: rgba(0, 0, 0, 0);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: Outfit;
-    flex-wrap: wrap;
-  }
-  
-  header p {
-    margin: 0;
-    padding-left: 20px;
-    color: var(--color-secundario);
-    font-weight: bold;
-    font-size: xx-large;
-    
-  }
-  
-  header nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding-right: 1.25rem;
-  
-    @media (width < 480px){
-      padding: 0;
-    }
-  }
-  
-  header nav ul li {
-    margin: 0 10px;
-    
-  }
-  
-  header nav ul li a {
-    color: var(--color-acento);
-    text-decoration: none;
-    font-size: clamp(1.5rem, 2.3vw, 4rem);
-  }
-  header nav ul li a:hover {
-    color: #f2f2f2;
-    text-shadow: 0 0 10px #f2f2f2,
-                 0 0 20px #f2f2f2,
-                 0 0 40px #f2f2f2,
-                 0 0 80px #f2f2f2,
-                 0 0 120px #f2f2f2;
-  }
-  
-  .logotipo {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  
-    @media (width < 768px ){
-        p {
-          display: none;
-        }
-        img {
-          margin-left: 1rem;
-        }
-    }
-  }
-
-
-/* ----- FIN HEADER ----- */
-
+/* Estilos del contenedor de juegos */
 .container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    overflow-y: auto;
-    margin: 80px 40px 60px 40px; /* Margen alrededor del contenedor */
-    
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden; /* Oculta los scrollbars */
+  margin: 80px 40px 60px 40px; /* Margen alrededor del contenedor */
 }
 
 .row {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .item {
-    flex: 1;
-    min-width: 200px;
-    height: 200px;
-    background-color: rgba(173, 216, 230, 0.192);
-    margin: 5px;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
-    border-radius: 10px;
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  height: 200px;
+  background-color: rgba(173, 216, 230, 0.192);
+  margin: 5px;
+  text-align: center;
+  /* padding: 20px; */
+  box-sizing: border-box;
+  border-radius: 10px;
+  perspective: 1000px;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid #00FFC9;
 }
 
-.item-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    padding: 5px;
-    box-sizing: border-box;
+.item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fit; /* Ajusta la imagen para que cubra todo el espacio */
+  border-radius: 10px; /* Opcional: añade bordes redondeados */
 }
+
+.item-front, .item-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Oculta la parte trasera por defecto */
+  transition: transform 0.6s ease; /* Transición suave del flip */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
+.item-front {
+  transform: rotateY(0deg);
+  
+}
+
+
+.item-back {
+  transform: rotateY(180deg);
+  background-color: #e09999; /* Color de fondo del reverso */
+}
+
+.item.flip .item-front {
+  transform: rotateY(-180deg); /* Gira hacia atrás */
+}
+
+.item.flip .item-back {
+  transform: rotateY(0deg); /* Gira hacia adelante */
+}
+
+ .item-footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  bottom: 4px;
+  left: 2px;
+} 
+
+
+
+
 
 .price-button-container {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 4px;
-    border-radius: 5px;
-    background-color: var(--color-primario);
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 4px;
+  border-radius: 5px;
+  background-color: var(--color-primario);
+  
+  
 }
 
 .price {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-right: 10px;
-    color: var(--color-textos);
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 10px;
+  color: var(--color-textos);
 }
 
 .buy-button {
-    padding: 5px 10px;
-    background-color: var(--color-secundario);
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+  padding: 5px 10px;
+  background-color: var(--color-secundario);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none ;
 }
 
 .buy-button:hover {
-    background-color: var(--color-acento);
-    color: var(--color-negro);
+  background-color: var(--color-acento);
+  color: var(--color-negro);
 }
 
 @media (max-width: 1200px) and (min-width: 768px) {
-    .row {
-        justify-content: space-between;
-    }
+  .row {
+      justify-content: space-between;
+  }
 
-    .item {
-        flex-basis: calc(50% - 20px);
-    }
+  .item {
+      flex-basis: calc(50% - 20px);
+  }
 
-    .row:nth-child(2) .item:nth-child(3), 
-    .row:nth-child(4) .item:nth-child(3) {
-        flex-basis: calc(100% - 80px);
-    }
+  .row:nth-child(2) .item:nth-child(3), 
+  .row:nth-child(4) .item:nth-child(3) {
+      flex-basis: calc(100% - 80px);
+  }
 }
 
 @media (max-width: 767px) {
-    
-    .row {
-        padding: 40px; /* Añade espacio alrededor de todos los items dentro de la fila */
-    }
-    
-    .item {
-        flex-basis: calc(100% - 20px);
-    }
+  .row {
+      padding: 40px; /* Añade espacio alrededor de todos los items dentro de la fila */
+  }
+  
+  .item {
+      flex-basis: calc(100% - 20px);
+  }
 }
-
-
-
-
-/*------------------------------------------------------------------------------------------------------------------------*/
-/*-------------------------------------------------------- FOOTER --------------------------------------------------------*/
-/*------------------------------------------------------------------------------------------------------------------------*/
-
+/* Estilos del footer */
 #footer {
   display: flex;
   justify-content: center;
@@ -204,8 +237,6 @@ header {
   background-color: var(--color-negro);
   bottom: 0;
 }
-
-/* Estilos para los iconos de redes sociales en el footer */
 
 #footer .social-icons {
   display: flex;
@@ -225,3 +256,4 @@ header {
 #footer .social-icons i {
   font-size: 2em;
 }
+
