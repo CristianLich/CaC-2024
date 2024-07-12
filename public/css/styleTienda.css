@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -5,9 +6,9 @@ body {
   box-sizing: border-box;
   height: 100vh;
   background-image: url('https://res.cloudinary.com/dkojgz9s6/image/upload/v1719844233/CodoACodoNJS/fondotienda.png');
-  background-repeat: no-repeat; /* Para evitar que se repita la imagen */
-  background-size: cover; /* Para hacer que la imagen cubra toda el área visible */
-  background-attachment: fixed; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 /* Variables de color */
@@ -78,13 +79,12 @@ header nav ul li a:hover {
 
 @media (max-width: 768px) {
   .logotipo p {
-      display: none;
+    display: none;
   }
   .logotipo img {
-      margin-left: 1rem;
+    margin-left: 1rem;
   }
 }
-
 
 /* Estilos del contenedor de juegos */
 .container {
@@ -92,8 +92,8 @@ header nav ul li a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  overflow: hidden; /* Oculta los scrollbars */
-  margin: 80px 40px 60px 40px; /* Margen alrededor del contenedor */
+  overflow: hidden;
+  margin: 80px 40px 60px 40px;
 }
 
 .row {
@@ -109,20 +109,20 @@ header nav ul li a:hover {
   background-color: rgba(173, 216, 230, 0.192);
   margin: 5px;
   text-align: center;
-  /* padding: 20px; */
   box-sizing: border-box;
   border-radius: 10px;
   perspective: 1000px;
   cursor: pointer;
   overflow: hidden;
   border: 1px solid #00FFC9;
+  font-family: outfit;
 }
 
 .item-image {
   width: 100%;
   height: 100%;
-  object-fit: fit; /* Ajusta la imagen para que cubra todo el espacio */
-  border-radius: 10px; /* Opcional: añade bordes redondeados */
+  object-fit: fit;
+  border-radius: 10px;
 }
 
 .item-front, .item-back {
@@ -131,45 +131,38 @@ header nav ul li a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Oculta la parte trasera por defecto */
-  transition: transform 0.6s ease; /* Transición suave del flip */
+  backface-visibility: hidden;
+  transition: transform 0.6s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 }
 
 .item-front {
   transform: rotateY(0deg);
-  
 }
-
 
 .item-back {
   transform: rotateY(180deg);
-  background-color: #e09999; /* Color de fondo del reverso */
+  background-color: #e09999;
 }
 
 .item.flip .item-front {
-  transform: rotateY(-180deg); /* Gira hacia atrás */
+  transform: rotateY(-180deg);
 }
 
 .item.flip .item-back {
-  transform: rotateY(0deg); /* Gira hacia adelante */
+  transform: rotateY(0deg);
 }
 
- .item-footer {
+.item-footer {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   position: fixed;
   bottom: 4px;
   left: 2px;
-} 
-
-
-
-
+}
 
 .price-button-container {
   display: flex;
@@ -178,8 +171,6 @@ header nav ul li a:hover {
   padding: 4px;
   border-radius: 5px;
   background-color: var(--color-primario);
-  
-  
 }
 
 .price {
@@ -196,7 +187,7 @@ header nav ul li a:hover {
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  text-decoration: none ;
+  text-decoration: none;
 }
 
 .buy-button:hover {
@@ -206,28 +197,114 @@ header nav ul li a:hover {
 
 @media (max-width: 1200px) and (min-width: 768px) {
   .row {
-      justify-content: space-between;
+    justify-content: space-between;
   }
 
   .item {
-      flex-basis: calc(50% - 20px);
+    flex-basis: calc(50% - 20px);
   }
 
-  .row:nth-child(2) .item:nth-child(3), 
+  .row:nth-child(2) .item:nth-child(3),
   .row:nth-child(4) .item:nth-child(3) {
-      flex-basis: calc(100% - 80px);
+    flex-basis: calc(100% - 80px);
   }
 }
 
 @media (max-width: 767px) {
   .row {
-      padding: 40px; /* Añade espacio alrededor de todos los items dentro de la fila */
+    padding: 40px;
   }
-  
+
   .item {
-      flex-basis: calc(100% - 20px);
+    flex-basis: calc(100% - 10px);
   }
 }
+
+/* Estilos del pop-up del carrito */
+.cart-popup {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: outfit;
+}
+
+.cart-content {
+  background-color: var(--color-negro);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  color: var(--color-textos);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #cf8989;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#cart-items .cart-item button.delete-button {
+  background-color: var(--color-secundario);
+  color: var(--texto);
+  padding: 5px 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: outfit;
+}
+
+#cart-items .cart-item button.delete-button:hover {
+  background-color: darken(var(--secundario), 10%);
+}
+
+#finalizar-compra {
+  background-color: var(--color-acento);
+  color: var(--color-negro);
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  font-family: outfit;
+}
+
+#finalizar-compra:hover {
+  background-color: darken(var(--color-textos), 10%);
+  color: var(--color-textos);
+}
+
+/* Estilos para el contador del carrito */
+.cart-count {
+  background-color: var(--color-secundario);
+  color: var(--color-textos);
+  border-radius: 50%;
+  padding: 0.2em 0.5em;
+  font-size: 0.8em;
+  margin-left: 0.5em;
+  position: relative;
+  top: -10px;
+  left: -10px;
+  font-family: outfit;
+}
+
 /* Estilos del footer */
 #footer {
   display: flex;
@@ -256,4 +333,3 @@ header nav ul li a:hover {
 #footer .social-icons i {
   font-size: 2em;
 }
-

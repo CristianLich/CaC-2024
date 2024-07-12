@@ -10,10 +10,25 @@ const CrearJuego = async (req, res) => {
         Plataforma, 
         URL_imagen,
         } = req.body;
+    const transaction = await Sequelize.transaction();    
     try {
-        const juego = await Juego.create({ Titulo, Descripcion,Categoria, Desarrollador, Publicador, Precio, Plataforma, URL_imagen });
+        const juego = await Juego.create(
+            { 
+            Titulo, 
+            Descripcion,
+            Categoria, 
+            Desarrollador, 
+            Publicador, 
+            Precio, 
+            Plataforma, 
+            URL_imagen 
+        },
+        { transaction }
+    );
+        await transaction.commit();
         res.status(201).json(juego);
     } catch (error) {
+        await transaction.rollback();
         res.status(500).json({ error: 'Error al intentar crear juego juego', details: error.message });
     }
 }
