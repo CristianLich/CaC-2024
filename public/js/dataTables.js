@@ -1,4 +1,32 @@
-// import DataTable from 'datatables.net-dt';
+function resetForm(){
+  document.getElementById("crearForm").reset();
+}
+document.addEventListener('DOMContentLoaded', function() {
+  const links = document.querySelectorAll('.sidebar-l');
+
+  links.forEach(link => {
+      link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Obtener el ID de la sección a mostrar
+          const sectionId = this.getAttribute('data-section');
+
+          // Mostrar la sección correspondiente y ocultar las demás
+          const sections = document.querySelectorAll('.container');
+          sections.forEach(section => {
+              if (section.id === sectionId) {
+                  section.removeAttribute('hidden');
+              } else {
+                  section.setAttribute('hidden', '');
+              }
+          });
+      });
+  });
+});
+
+
+
+///////////////////////////////// TABLA CLIENTES
 let tablaClientes = new DataTable("#tablaClientes", {
   ajax: {
     url: "/clientes",
@@ -142,9 +170,7 @@ tablaJuegos
 
 //CREAR JUEGOS
 document.getElementById("crearJuego").addEventListener("click", function() {
-    // let formData = new FormData(document.getElementById("crearForm"));
-    // let data = {};
-    let form = document.getElementById("crearForm");
+  let form = document.getElementById("crearForm");
   let formData = new FormData(form);
   let data = {};
 

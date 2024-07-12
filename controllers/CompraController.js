@@ -17,7 +17,11 @@ const crearCompra =  async (req, res) => {
         // Crear el cliente (si es nuevo) o buscarlo si ya existe
         let clienteBuscadoOCreado = await Cliente.findOrCreate({
             where: { Email: cliente.Email}, 
-            defaults: Cliente, // si no se encuentra el cliente en la linea anterior, se utilizan los datos pasador por el usuario para crearlo
+            defaults: {
+                Nombre: cliente.Nombre,
+                Apellido: cliente.Apellido,
+                Telefono: cliente.Telefono
+            }, // si no se encuentra el cliente en la linea anterior, se utilizan los datos pasador por el usuario para crearlo
             transaction // Asocia la transacción a esta operación
         });
         // clienteBuscadoOCreado es un array con el cliente creado o encontrado
@@ -25,6 +29,7 @@ const crearCompra =  async (req, res) => {
 
         // Crear la compra asociada al cliente
         const compra = await Compra.create({
+            Fecha_compra: new Date(),
             ID_cliente: clienteId,
         }, { transaction });
         let total = 0;
