@@ -76,7 +76,7 @@
                         <th class="col"> Descripcion </th>
                         <th class="col"> Plataforma </th>
                         <th class="col"> Publicador </th>
-                        <th class="col"> Fecha de Lanzamiento </th>
+                        <th class="col"> Estado </th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -88,7 +88,67 @@
 
 
 
-<!-- ------------------------------ Modal -->
+
+
+    <div class="modal" id="crearModal" tabindex="-1" aria-labelledby="crearModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="crearModal">Añadir Juego</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+    
+    
+              <form id="crearForm" class="form-floating row g-3">
+    
+                <div class=" mb-3">
+                    <label class="form-label" for="Titulo">Titulo</label>
+                    <input type="text" class="form-control" id="Titulo" name="Titulo">
+                </div>
+                <div class=" mb-3">
+                  <label class="form-label" for="Descripcion">Descripcion</label>
+                  <textarea class="form-control" id="Descripcion" name="Descripcion"></textarea>
+                </div>
+                <div class="col-md-9 mb-3">
+                  <label class="form-label" for="Desarrollador">Desarrollador</label>
+                  <input type="text" class="form-control" id="Desarrollador" name="Desarrollador">
+                </div>
+                <div class="col-md-9 mb-3">
+                  <label class="form-label" for="Publicador">Publicador</label>
+                  <input type="text" class="form-control" id="Publicador" name="Publicador">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label class="form-label" for="Categoria">Categoria</label>
+                  <input type="text" class="form-control" id="Categoria" name="Categoria">
+                </div>
+                <div class=" col-md-2 mb-3">
+                  <label class="form-label" for="Precio">Precio</label>
+                  <input type="text" class="form-control" id="Precio" name="Precio">
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label class="form-label" for="Plataforma">Plataforma</label>
+                  <input type="text" class="form-control" id="Plataforma" name="Plataforma">
+                </div>
+                <div class=" mb-3">
+                  <label class="form-label" for="URLImagen">URL de la Imagen</label>
+                  <input type="text" class="form-control" id="URLImagen" name="URLImagen">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="crearJuego">Añadir Juego</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+
+<!-- ------------------------------ Modal EDITAR JUEGOS -->
+
 
 <div class="modal" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -124,10 +184,6 @@
               <label class="form-label" for="Categoria">Categoria</label>
               <input type="text" class="form-control" id="EditarCategoria" name="Categoria">
             </div>
-            <div class="col-md-3 mb-3">
-              <label class="form-label" for="FechaLanzamiento">Fecha Lanzamiento</label>
-              <input type="date" class="form-control" id="EditarFechaLanzamiento" name="FechaLanzamiento">
-            </div>
             <div class=" col-md-2 mb-3">
               <label class="form-label" for="Precio">Precio</label>
               <input type="text" class="form-control" id="EditarPrecio" name="Precio">
@@ -146,7 +202,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
-          <button type="button" class="btn btn-primary" id="saveChanges">Guardar cambios</button>
+          <button type="button" class="btn btn-primary" id="guardarCambios">Guardar cambios</button>
         </div>
       </div>
     </div>

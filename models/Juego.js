@@ -33,10 +33,6 @@ const Juego = sequelize.define('Juego', {
         type: DataTypes.STRING(100),
         allowNull: true
     },
-    Fecha_lanzamiento: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
     Precio: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
@@ -54,7 +50,11 @@ const Juego = sequelize.define('Juego', {
         validate: {
             isUrl: true
         }
-    }  
+    },
+    Estado: {
+        type: DataTypes.INTEGER,
+        defaultValue: 1
+    } 
 },{
     timestamps: false
 }

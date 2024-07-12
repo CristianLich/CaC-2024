@@ -14,17 +14,16 @@ const crearCompra =  async (req, res) => {
         transaction = await sequelize.transaction();
 
         // Crear el cliente (si es nuevo) o buscarlo si ya existe
-        let clienteCreado = await Cliente.findOrCreate({
-            where: { ID_cliente: cliente.ID_cliente }, 
+        let clienteBuscadoOCreado = await Cliente.findOrCreate({
+            where: { Email: cliente.Email}, 
             defaults: Cliente, // si no se encuentra el cliente en la linea anterior, se utilizan los datos pasador por el usuario para crearlo
             transaction // Asocia la transacción a esta operación
         });
-        // clienteCreado es un array con el cliente creado o encontrado
-        const clienteId = clienteCreado[0].ID_cliente;
+        // clienteBuscadoOCreado es un array con el cliente creado o encontrado
+        const clienteId = clienteBuscadoOCreado[0].ID_cliente;
 
         // Crear la compra asociada al cliente
         const compra = await Compra.create({
-            Fecha_compra: new Date(),  // Puedes usar la fecha actual
             ID_cliente: clienteId,
         }, { transaction });
         let total = 0;

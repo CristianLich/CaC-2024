@@ -6,12 +6,12 @@ const CrearJuego = async (req, res) => {
         Categoria,
         Desarrollador, 
         Publicador, 
-        Fecha_lanzamiento, 
-        Precio, Plataforma, 
-        URL_imagen, 
-        URL_archivo } = req.body;
+        Precio, 
+        Plataforma, 
+        URL_imagen,
+        } = req.body;
     try {
-        const juego = await Juego.create({ Titulo, Descripcion,Categoria, Desarrollador, Publicador, Fecha_lanzamiento, Precio, Plataforma, URL_imagen, URL_archivo });
+        const juego = await Juego.create({ Titulo, Descripcion,Categoria, Desarrollador, Publicador, Precio, Plataforma, URL_imagen });
         res.status(201).json(juego);
     } catch (error) {
         res.status(500).json({ error: 'Error al intentar crear juego juego', details: error.message });
@@ -44,7 +44,7 @@ const ObtenerJuego = async (req, res) => {
 
 const ModificarJuego = async (req, res) => {
     const { ID_juego } = req.params;
-    const { Titulo, Descripcion,Categoria, Desarrollador, Publicador, Fecha_lanzamiento, Precio, Plataforma, URL_imagen, URL_archivo } = req.body;
+    const { Titulo, Descripcion,Categoria, Desarrollador, Publicador, Precio, Plataforma, URL_imagen } = req.body;
     try {
         const juego = await Juego.findByPk(ID_juego);
         if (juego) {
@@ -53,11 +53,9 @@ const ModificarJuego = async (req, res) => {
             juego.Categoria = Categoria || juego.Categoria;
             juego.Desarrollador = Desarrollador || juego.Desarrollador;
             juego.Publicador = Publicador || juego.Publicador;
-            juego.Fecha_lanzamiento = Fecha_lanzamiento || juego.Fecha_lanzamiento;
             juego.Precio = Precio || juego.Precio;
             juego.Plataforma = Plataforma || juego.Plataforma;
-            juego.URL_imagen = URL_imagen || juego.URL_imagen;
-            juego.URL_archivo = URL_archivo || juego.URL_archivo;
+            juego.URL_imagen = URL_imagen || juego.URL_imagen;    
             await juego.save();
             res.status(200).json(juego);
         } else {
@@ -68,22 +66,35 @@ const ModificarJuego = async (req, res) => {
     }
 }
 
-const BorrarJuego = async (req, res) => {
-    const { ID_juego } = req.params;
+const DesactivarJuego = async (req, res) => {
+    const  ID_juego  = req.params.ID_juego;
     try {
         const juego = await Juego.findByPk(ID_juego);
         if (juego) {
-            await juego.destroy();
-            res.status(204).send();
+          await juego.update({ Estado: 0 });
+          return res.json({ message: 'Estado actualizado exitosamente' });
         } else {
-            res.status(404).json({ error: 'Juego not found' });
+          return res.status(404).json({ message: 'Juego no encontrado' });
         }
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to delete juego' });
-    }
+      } catch (error) {
+        return res.status(500).json({ message: 'Error al actualizar el estado', error: error.message });
+      }
 }
 
-
+const ActivarJuego = async (req, res) => {
+    const  ID_juego  = req.params.ID_juego;
+    try {
+      const juego = await Juego.findByPk(ID_juego);
+      if (juego) {
+        await juego.update({ Estado: 1 });
+        return res.json({ message: 'Estado actualizado exitosamente' });
+      } else {
+        return res.status(404).json({ message: 'Juego no encontrado' });
+      }
+    } catch (error) {
+      return res.status(500).json({ message: 'Error al actualizar el estado', error: error.message });
+    }
+  };
 
 
 
@@ -91,4 +102,5 @@ module.exports = {  CrearJuego ,
                     ObtenerJuegos,
                     ObtenerJuego,
                     ModificarJuego,
-                    BorrarJuego }
+                    DesactivarJuego,
+                    ActivarJuego }

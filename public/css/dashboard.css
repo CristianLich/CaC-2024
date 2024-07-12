@@ -216,3 +216,16 @@ li .delete:hover {
     text-overflow: ellipsis;
     max-width: 200px; /* Ajusta este valor según tus necesidades */
 }
+.estado-activo {
+    background-color: green;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+  }
+  
+  .estado-inactivo {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+  }
